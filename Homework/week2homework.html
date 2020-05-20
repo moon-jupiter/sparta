@@ -50,7 +50,6 @@
         }
 
         window.onload = function () {
-
             $.ajax({
                 type: "GET",
                 url: "https://api.manana.kr/exchange/rate.json",
@@ -60,7 +59,6 @@
                     let dollar_rate = response[1].rate;
                     $('#dollar_rate').append(dollar_rate)
                 }
-
             })
         }
 
@@ -79,8 +77,6 @@
             width: 600px;
             margin: 20px auto auto auto;
         }
-
-
 
         .button {
             margin-left: 250px;
