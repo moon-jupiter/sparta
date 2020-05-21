@@ -29,11 +29,12 @@
             let num_item = $('#num_item').val();
             let consumer_address = $('#consumer_address').val();
             let consumer_tel = $('#consumer_tel').val();
+            let choose_item = '수량을 선택하세요.';
 
             if (consumer_name === '') {
                 alert('이름을 입력하세요!');
             } else {
-                if (num_item === '0') {
+                if (num_item === choose_item) {
                     alert('수량을 입력하세요!');
                 } else {
                     if (consumer_address === '') {
@@ -65,16 +66,16 @@
     </script>
     <style>
         .background {
-            width: 600px;
+            width: 500px;
             height: 350px;
-            background-image: url(https://img4.tmon.kr/cdn3/deals/2019/12/31/2901381706/2901381706_front_958cc0b1df.jpg);
+            background-image: url(https://lh3.googleusercontent.com/proxy/JZW3cs1Yri2FIljXZlc1BQwDlCYhVC0XC5WUWN4SzUH6oqjOPatwrqRmIg6r4-mIbzwr6gma49pV-dQh6vLxE4sbyzuTFYwkM8R2MARncvGucsB9);
             background-position: center;
             background-size: cover;
             border-radius: 10px;
         }
 
         .all {
-            width: 600px;
+            width: 500px;
             margin: 20px auto auto auto;
         }
 
@@ -107,8 +108,8 @@
     <div class="background">
     </div>
     <div>
-        <span class="title">토스트 기계</span>
-        <span class="price">가격 : 100,000원</span>
+        <span class="title">필립스 HD2582/00</span>
+        <span class="price">가격 : 27,270원</span>
         <h5>
             이 상품으로 아침 토스트를 구워 드세요
         </h5>
@@ -163,7 +164,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">전화번호</span>
                 </div>
-                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
+                <input type="tel" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
                     id="consumer_tel">
             </div>
 
