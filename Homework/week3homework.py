@@ -10,9 +10,8 @@ songs = soup.select('#body-content > div.newest-list > div > table > tbody > tr'
 i = 0
 
 for song in songs:
-    song_name = song.select_one('td.info > a.title.ellipsis').text
+    song_name = song.select_one('td.info > a.title.ellipsis').text.strip()
     if song_name is not None:
         i += 1
-        song_num = song.select_one('td.number').text
         song_singer = song.select_one('td.info > a.artist.ellipsis').text
-        print(i, song_name.strip(), song_singer)
+        print(i, song_name, song_singer)
