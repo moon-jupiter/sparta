@@ -63,7 +63,6 @@
                 <td>${phonenum}</td>
             </tr>`;
 
-
             $('#orders-box_tb').append(temp_html);
         }
 
@@ -76,30 +75,33 @@
 
             if (consumer_name === '') {
                 alert('이름을 입력하세요!');
-            }
-            if (num_item === choose_item) {
-                alert('수량을 입력하세요!');
-            }
-            if (consumer_address === '') {
-                alert('주소를 입력하세요!');
-            }
-            if (consumer_tel === '') {
-                alert('전화번호를 입력하세요!');
-            }
-
-            $.ajax({
-                type: "POST",
-                url: "/memo",
-                data: {name_give: consumer_name, number_give: num_item, address_give: consumer_address, phonenum_give: consumer_tel},
-                success: function (response) {
-                    if (response['result'] == 'success') {
-                        alert(response['msg']);
-                        window.location.reload();
+            } else {
+                if (num_item === choose_item) {
+                    alert('수량을 입력하세요!');
+                } else {
+                    if (consumer_address === '') {
+                        alert('주소를 입력하세요!');
                     } else {
-                        alert('서버 오류!')
+                        if (consumer_tel === '') {
+                            alert('전화번호를 입력하세요!');
+                        } else {
+                            $.ajax({
+                                type: "POST",
+                                url: "/memo",
+                                data: { name_give: consumer_name, number_give: num_item, address_give: consumer_address, phonenum_give: consumer_tel },
+                                success: function (response) {
+                                    if (response['result'] == 'success') {
+                                        alert(response['msg']);
+                                        window.location.reload();
+                                    } else {
+                                        alert('서버 오류!')
+                                    }
+                                }
+                            })
+                        }
                     }
                 }
-            })
+            }
         }
 
 
@@ -228,24 +230,6 @@
             </tr>
         </thead>
         <tbody id="orders-box_tb">
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
         </tbody>
     </table>
 
