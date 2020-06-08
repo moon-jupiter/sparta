@@ -43,7 +43,6 @@
                 data: {},
                 success: function (response) {
                     if (response['result'] == 'success') {
-                        alert(response.msg);
                         const mystars = response['data'] || [];
                         for (i = 0; i < mystars.length; i++) {
                             let star_receive = mystars[i];
@@ -79,13 +78,13 @@
                         </div>
                         </div>
                         <footer class="card-footer">
-                        <a href="#" onclick="like_star('김다미')" class="card-footer-item has-text-info">
+                        <a href="#" onclick="like_star('${name}')" class="card-footer-item has-text-info">
                             위로!
                             <span class="icon">
                             <i class="fas fa-thumbs-up"></i>
                             </span>
                         </a>
-                        <a href="#" onclick="delete_star('김다미')" class="card-footer-item has-text-danger">
+                        <a href="#" onclick="delete_star('${name}')" class="card-footer-item has-text-danger">
                             삭제
                             <span class="icon">
                             <i class="fas fa-ban"></i>
@@ -101,11 +100,11 @@
             $.ajax({
                 type: 'POST',
                 url: '/api/like',
-                data: {},
+                data: {'name_give': name},
                 success: function (response) {
                     if (response['result'] == 'success') {
-                        let msg = response['msg'];
-                        alert(msg);
+                        alert('좋아요 완료!');
+                        window.location.reload();
                     }
                 }
             });
@@ -115,35 +114,32 @@
             $.ajax({
                 type: 'POST',
                 url: '/api/delete',
-                data: {},
+                data: {'name_give': name},
                 success: function (response) {
                     if (response['result'] == 'success') {
-                        let msg = response['msg'];
-                        alert(msg);
+                        alert('삭제 완료!');
+                        window.location.reload();
                     }
                 }
             });
         }
 
     </script>
-</head>
-
-<body>
+  </head>
+  <body>
     <section class="hero is-warning">
-        <div class="hero-body">
-            <div class="container make-center">
-                <h1 class="title">
-                    마이 페이보릿 무비스타😆
-                </h1>
-                <h2 class="subtitle">
-                    순위를 매겨봅시다
-                </h2>
-            </div>
+      <div class="hero-body">
+        <div class="container make-center">
+          <h1 class="title">
+            마이 페이보릿 무비스타😆
+          </h1>
+          <h2 class="subtitle">
+            순위를 매겨봅시다
+          </h2>
         </div>
+      </div>
     </section>
     <div class="star-list" id="star-box">
-
     </div>
-</body>
-
+  </body>
 </html>
